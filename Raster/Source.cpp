@@ -18,7 +18,7 @@ void ProcessInput()
     {
         switch (e.type)
         {
-            case SDL_QUIT: // нажал на крестик в окошке, чтобы закрыть его
+            case SDL_QUIT: // "Esc" for close program
             ShouldStop = true;
             break;
 
@@ -42,7 +42,6 @@ int main()
     SDL_Window* pWindow = nullptr;
     SDL_Renderer* pRender = nullptr;
 
-    // создаём окошко и рендер
     SDL_CreateWindowAndRenderer(width, height, 0, &pWindow, &pRender);
 
     Rasterizer raster;
@@ -73,19 +72,15 @@ int main()
 
     while (!ShouldStop)
     {
-        // обрабатываем ввод
         ProcessInput();
 
-        // рисуем
         SDL_SetRenderDrawColor(pRender, 0, 0, 0, 255);
         SDL_RenderClear(pRender);
-        //SDL_SetRenderDrawColor(pRender, 255, 255, 255, 255);
 
         int x = 10, y = 20;
         raster.Draw(3, pRender);
-        ///SDL_RenderDrawPoint(pRender, x, y);
+        // SDL_RenderDrawPoint(pRender, x, y);
 
-        // в окошко отображаем
         SDL_RenderPresent(pRender);
     }
 }

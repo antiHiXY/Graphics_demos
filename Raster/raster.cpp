@@ -53,8 +53,6 @@ void Rasterizer::Draw (size_t idxAmount, SDL_Renderer* sdlPtr)
     Vertex* vertexBuff = reinterpret_cast <Vertex*> (m_Buffers[m_VertBuff]);
     std::uint8_t* indexBuff= m_Buffers[m_IndxBuff];
 
-    //Vertex* v1 = reinterpret_cast <Vertex*> (vertexBuff);
-
     for (int k = 0; k < idxAmount / 3; ++k)
     {
         const Vertex v1 = *(vertexBuff + (indexBuff[k]));
